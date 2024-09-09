@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/BDimitrova/Wizard-Creature-Wiki#readme",
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^3.1.4"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -29,7 +29,8 @@
     "express-session": "^1.18.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.7",
-    "util": "^0.12.5"
+    "util": "^0.12.5",
+    "vercel": "^32.3.0"
   },
   "description": ""
 }
