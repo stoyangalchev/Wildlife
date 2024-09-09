@@ -5,11 +5,13 @@ const creaturesServices = require("../services/creaturesServices");
 
 router.get("/", async (req, res) => {
   try {
-    const userId = req.user._id; // Adjust this based on how you store the user ID
+    if (req.user && req.user._id) {
+      const userId = req.user._id;
+      const user = await authServices.findUserByID(userId);
+      return res.render("home", { user });
+    }
 
-    const user = await authServices.findUserByID(userId);
-
-    res.render("home", { user });
+    res.render("home");
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error");
@@ -21,7 +23,6 @@ router.get("/profile", isAuth, async (req, res) => {
 
   let creatures = await creaturesServices.getMyCreatedPost(userId);
   let owner = await creaturesServices.findOwner(userId);
-
 
   res.render("profile", {
     creatures,
